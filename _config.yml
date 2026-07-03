@@ -1,0 +1,18 @@
+title: "Dr.Debug Wiki"
+description: "Evidence-routed debugging knowledge, preservation, scanner, and repair workflows."
+url: "https://doktor-debug.github.io"
+baseurl: "/wiki"
+markdown: kramdown
+theme: null
+plugins: []
+include:
+  - .INDEX.md
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

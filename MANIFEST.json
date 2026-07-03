@@ -1,0 +1,13 @@
+{
+  "repo": "doktor-debug/wiki",
+  "version": "2.2.2",
+  "purpose": "Standalone GitHub Pages documentation/wiki site.",
+  "pages_entry": "index.md",
+  "toc": [
+    ".INDEX.md",
+    "TOC1.md",
+    "TOC2.md",
+    "TOC3.md"
+  ],
+  "created_at": "2026-07-03"
+}

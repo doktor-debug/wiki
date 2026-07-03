@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <header class="site-header">
+    <a class="brand" href="{{ '/' | relative_url }}"><span class="brand-mark">Dr</span><span>Debug Wiki</span></a>
+    <nav>
+      <a href="{{ '/TOC1' | relative_url }}">Repos</a>
+      <a href="{{ '/TOC2' | relative_url }}">Gates</a>
+      <a href="{{ '/TOC3' | relative_url }}">Lifecycles</a>
+      <a href="{{ '/docs/api-reference/' | relative_url }}">API</a>
+    </nav>
+  </header>
+  <main class="page-shell">
+    <aside class="toc-panel">
+      <input id="wikiSearch" class="search" placeholder="Filter navigation…" aria-label="Filter navigation">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/.INDEX' | relative_url }}">Full index</a>
+      <a href="{{ '/docs/architecture/' | relative_url }}">Architecture</a>
+      <a href="{{ '/docs/repository-map/' | relative_url }}">Repository map</a>
+      <a href="{{ '/docs/preservation/' | relative_url }}">Preservation</a>
+      <a href="{{ '/docs/scanner-import-canonical/' | relative_url }}">Scanner/import/canonical</a>
+      <a href="{{ '/docs/api-reference/' | relative_url }}">API reference</a>
+    </aside>
+    <article class="content-card">
+      {{ content }}
+    </article>
+  </main>
+  <script src="{{ '/assets/js/site.js' | relative_url }}"></script>
+</body>
+</html>
