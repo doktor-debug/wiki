@@ -1,13 +1,28 @@
 {
   "repo": "doktor-debug/wiki",
-  "version": "2.2.2",
-  "purpose": "Standalone GitHub Pages documentation/wiki site.",
-  "pages_entry": "index.md",
-  "toc": [
-    ".INDEX.md",
-    "TOC1.md",
-    "TOC2.md",
-    "TOC3.md"
-  ],
-  "created_at": "2026-07-03"
+  "version": "2.3.0",
+  "generated_at": "2026-07-19",
+  "status": "active",
+  "role": "Human-facing architecture, policy summaries, and navigation",
+  "agent_instructions": "AGENTS.md",
+  "inventory": {
+    "historical_sha256": "SHA256SUMS.txt",
+    "historical_filelists": "FILELISTS/",
+    "status": "regeneration_required_after_final_v2.3_commit",
+    "scope": "regenerate all non-ignored repository files after the final commit; do not present v2.2 hashes as current"
+  },
+  "routing": {
+    "proposals": "doktor-debug/proposals",
+    "workflows": "doktor-debug/workflows",
+    "gates": "n-e-o-w-u-l-f/myAPI"
+  },
+  "owner_mode": {
+    "repository_describe": "read_only",
+    "mutation": "separately_gated"
+  },
+  "artifact_distribution": {
+    "archive": "active",
+    "storage": "active",
+    "decision": "item_specific"
+  }
 }
