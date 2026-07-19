@@ -8,22 +8,25 @@ permalink: /TOC2/
 
 ## CUSTOMER_MODE
 
-Purpose: keep knowledge building moving. CUSTOMER_MODE may write routed proposals, scanner results, preservation metadata, import plans, and textual debug knowledge. It may supersede earlier false knowledge when Dr.Debug has stronger evidence than the old claim.
+Purpose: keep knowledge building moving. CUSTOMER_MODE may submit routed proposals only to `doktor-debug/proposals` and may use separately allowed scanner, preservation-metadata, import, or textual-knowledge paths after authentication, redaction, and path validation.
 
 ## ADMIN_MODE
 
-Purpose: operate the API and controlled write machinery. ADMIN_MODE can manage imports, scanner runs, OpenAPI/API synchronization, workflow batches, and repository routing after authentication, owner context where configured, path policy, redaction, validation, and audit.
+Purpose: operate controlled imports, scanner runs, workflow batches, and repository routing through the canonical `n-e-o-w-u-l-f/myAPI` gates. Workflow definitions, plans, and templates remain in `doktor-debug/workflows`.
 
 ## OWNER_MODE
 
-Purpose: final approvals, canonical promotion, release packaging, destructive migrations, and public rehosting decisions. OWNER_MODE requires stronger review metadata, explicit apply intent, affected paths, rollback, and validation.
+After authentication, OWNER_MODE may discover, read, index, summarize, and describe all 14 `doktor-debug` repositories plus `n-e-o-w-u-l-f/myAPI` without mutation. Description output must redact secrets, private payloads, personal data, restricted records, and non-public storage locators.
+
+Mutation is a separate capability. Canonical promotion, release packaging, destructive migration, visibility changes, and artifact distribution require explicit apply intent, exact affected paths, item-specific approval evidence, validation, audit, and rollback through `myAPI`.
 
 ## Non-negotiable hard blocks
 
-- Secret storage
-- Raw unredacted logs
+- Secret or credential storage
+- Raw unredacted logs or private payload disclosure
+- Non-public storage locator disclosure
 - Path traversal
 - Destructive action without rollback
 - Unauthorized repository access
-- Public rehosting without review
+- Public artifact distribution without an item-specific basis and approval
 - Unsupported claims that a binary is malware-free, license-free, or universally compatible

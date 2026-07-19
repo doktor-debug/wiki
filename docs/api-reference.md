@@ -6,19 +6,21 @@ permalink: /docs/api-reference/
 
 # API Reference
 
-The OpenAPI document embeds complete endpoint descriptions. This page summarizes them for humans.
+The canonical Dr.Debug API implementation, OpenAPI document, repository allowlist, gates, and tests live only in `n-e-o-w-u-l-f/myAPI`. No organization API mirror is used. This page is a human-readable summary and must stay synchronized with that canonical contract.
+
+Authenticated `OWNER_MODE` may use read-only discovery operations to discover, read, index, summarize, and describe all 14 `doktor-debug` repositories plus `n-e-o-w-u-l-f/myAPI`. That capability never implies mutation. Write operations are authorized separately and must redact secrets, private payload content, and non-public storage locators.
 
 ## GET `/admin/ping`
 
 **Operation ID:** `adminPing`
 
-Performs a minimal authenticated health check for the Dr.Debug GPT backend. The endpoint verifies that the bearer token is accepted by the backend, that the application process is reachable, and that the action bridge can receive a JSON response. It does not inspect GitHub state, does not write files, and does not reveal secrets or server configuration. Use it as the first smoke test after changing the GPT Action URL, bearer token, reverse proxy, local tunnel, or API deployment.
+Performs a minimal authenticated health check for the `n-e-o-w-u-l-f/myAPI` service. The endpoint verifies that the bearer token is accepted, that the application process is reachable, and that the action bridge can receive a JSON response. It does not inspect GitHub state, write files, or reveal secrets or server configuration. Use it as the first smoke test after changing the GPT Action URL, bearer token, reverse proxy, local tunnel, or deployment.
 
 ## POST `/admin/owner-ping`
 
 **Operation ID:** `ownerPing`
 
-Validates the Dr.Debug mode gate for a single requested operation, repository, owner identity, and reason. This endpoint is intended to answer the question “would this mode/repo/operation combination be accepted before any write path is evaluated?” It normalizes known repository aliases, checks the requested mode against the allowed repository set, verifies owner requirements for ADMIN_MODE and OWNER_MODE, and returns a structured gate result. It is safe for diagnostics because it performs no repository writes and no file-content processing.
+Validates the Dr.Debug mode gate for a requested operation, repository, owner identity, and reason before any mutation is attempted. It normalizes known repository aliases, checks the requested mode and capability, verifies owner requirements, and returns a structured gate result. For authenticated `OWNER_MODE`, read-only discover/read/index/summarize/describe operations may cover all 14 `doktor-debug` repositories plus `n-e-o-w-u-l-f/myAPI`; a successful description preflight grants no write permission. The endpoint performs no repository writes or file-content processing.
 
 ## POST `/admin/files/dry-run`
 
@@ -36,7 +38,7 @@ Reads repository metadata and effective GitHub token capability for a target Dr.
 
 **Operation ID:** `githubWriteFiles`
 
-Performs a controlled file write to one GitHub repository after all required gates pass. The endpoint enforces bearer authentication, mode/repository allowlisting, owner requirements, path policy, secret/redaction scanning, branch handling, commit-message requirements, and audit logging. It expects complete replacement file contents, not diffs, because the backend must know exactly what will be stored. CUSTOMER_MODE writes remain routed to approved knowledge, proposal, archive, preservation, or staging paths; ADMIN_MODE and OWNER_MODE may write broader operational files when the request is authorized and validated. The endpoint must never be used to store secrets, raw unredacted logs, or unreviewed public binary rehosting payloads.
+Performs a controlled file write to one GitHub repository after all required gates pass. The endpoint enforces bearer authentication, mode/repository allowlisting, owner requirements, path policy, secret/redaction scanning, branch handling, commit-message requirements, and audit logging. It expects complete replacement file contents, not diffs, because `myAPI` must know exactly what will be stored. New proposals route only to `doktor-debug/proposals`; workflow definitions, plans, and templates route only to `doktor-debug/workflows`. The endpoint must never store secrets, raw unredacted logs, private storage locators, or payloads lacking the required item-specific visibility and distribution approval.
 
 ## POST `/admin/file-inventory/submit`
 
@@ -54,7 +56,7 @@ Validates an autonomous Dr.Debug knowledge correction request. This endpoint exi
 
 **Operation ID:** `storageMirrorRegister`
 
-Registers private storage or mirror metadata for files that may be needed for future debugging, preservation, or deadlink recovery. This endpoint separates private preservation from public rehosting: it may record hashes, filenames, upstream URL, source status, and storage status immediately, but it must not imply that the backend is offering a public download. Public rehosting remains a separate review decision. Use this endpoint for drivers, firmware, installers, manuals, APKs, ZIPs, archives, and other artifacts that might disappear upstream while still being important to reproduce a repair workflow.
+Registers active storage and mirror state for files needed for debugging, preservation, reproducibility, or dead-link recovery. It records hashes, filenames, upstream URL, source status, storage tier, distribution basis, visibility, approval state, integrity, and scan state as independent item-level facts. Outcomes may include private retention, restricted access, public metadata, or approved public artifact distribution. Upstream online/offline status alone neither permits nor forbids an outcome, and private storage locators are never returned in public descriptions.
 
 ## POST `/admin/workflows/batch-dry-run`
 
@@ -90,10 +92,10 @@ Validates a proposal-to-canonical route. The endpoint receives a proposal identi
 
 **Operation ID:** `archiveRegister`
 
-Registers an archive artifact in the established Dr.Debug stammbaum structure. The endpoint records the target taxonomy path, filename, hashes, upstream availability, and public mirror status. It supports immediate preservation records, deadlink candidates, private manifests, and later public rehosting review without turning the archive repository into an uncontrolled file host. Use it for manuals, firmware packages, driver bundles, APKs, installers, source archives, and multi-file evidence packages that must remain discoverable for future debugging and repair workflows.
+Registers an artifact in the active `doktor-debug/archive` Stammbaum. The endpoint records taxonomy path, filename, hashes, provenance, source status, distribution basis, visibility, approval, integrity, scan state, and storage relationship. It supports private preservation, restricted access, public metadata, and approved public artifacts without turning the repository into an uncontrolled file host. Use it for manuals, firmware packages, driver bundles, APKs, installers, source archives, and multi-file evidence packages that must remain discoverable for future repair workflows.
 
 ## POST `/admin/preservation/capture`
 
 **Operation ID:** `preservationCapture`
 
-Registers an immediate private preservation capture. This endpoint is based on the preserve-now / rehost-later-review rule: Dr.Debug should preserve important debugging artifacts while they are still reachable or available, because it cannot know when an upstream file will disappear. The request can record source URL, source status, filename, size, MD5, SHA-256, stammbaum route, device/software/dependency scope, storage location, scan status, and public rehosting status. A successful response means the metadata and private-preservation intent are accepted; it does not mean the file is publicly offered, malware-free, license-free, or approved for redistribution.
+Registers a preservation capture request. Dr.Debug may preserve important artifacts promptly because future availability is uncertain, but preservation and distribution remain separate item-level decisions. The request records source URL/status, filename, size, MD5, SHA-256, Stammbaum route, device/software/dependency scope, redacted storage route, scan state, distribution basis, visibility, and approval state. A successful response confirms only the explicitly approved outcome; it is never a universal claim that an artifact is malware-free, license-free, or compatible.
