@@ -1,15 +1,16 @@
 {
   "repo": "doktor-debug/wiki",
   "version": "2.3.0",
-  "generated_at": "2026-07-19",
+  "generated_at": "2026-07-20",
   "status": "active",
   "role": "Human-facing architecture, policy summaries, and navigation",
   "agent_instructions": "AGENTS.md",
   "inventory": {
-    "historical_sha256": "SHA256SUMS.txt",
+    "sha256": "SHA256SUMS.txt",
+    "filelist": "FILELISTS/included_wiki_v2.3.0_file_hashes.csv",
     "historical_filelists": "FILELISTS/",
-    "status": "regeneration_required_after_final_v2.3_commit",
-    "scope": "regenerate all non-ignored repository files after the final commit; do not present v2.2 hashes as current"
+    "status": "current",
+    "scope": "all cached or untracked non-ignored regular files; generated inventory self-references excluded"
   },
   "routing": {
     "proposals": "doktor-debug/proposals",
