@@ -30,3 +30,11 @@ Mutation is a separate capability. Canonical promotion, release packaging, destr
 - Unauthorized repository access
 - Public artifact distribution without an item-specific basis and approval
 - Unsupported claims that a binary is malware-free, license-free, or universally compatible
+
+## Gateway and project-family boundaries
+
+- Public GPT Actions use `/dr.debug/*`.
+- `/myapi/*` is an internal or loopback compatibility prefix.
+- Policy-declared or pending repositories are not operational access.
+- The exact fourteen-repository OWNER_MODE discovery group remains distinct
+  from separately authorized external project targets.

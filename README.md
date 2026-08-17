@@ -1,7 +1,7 @@
 # doktor-debug/wiki
 
-Version: 2.3.0
-Date: 2026-07-19
+Version: 2.4.0
+Date: 2026-07-28
 
 Standalone GitHub Pages documentation and navigation portal for Dr.Debug-GPT.
 
@@ -17,5 +17,10 @@ Standalone GitHub Pages documentation and navigation portal for Dr.Debug-GPT.
 The 14 repositories under `doktor-debug` own their respective knowledge and artifact domains. The only canonical API implementation, OpenAPI contract, repository allowlist, and gate tests live externally in `n-e-o-w-u-l-f/myAPI`; no organization API mirror is used.
 
 All new proposals originate in `doktor-debug/proposals`, and all workflow definitions, plans, and templates originate in `doktor-debug/workflows`. Authenticated `OWNER_MODE` may describe all 14 repositories plus `myAPI` without mutation; every write remains separately gated. Archive and storage are active services with item-specific visibility and distribution decisions.
+
+Public GPT Actions use `/dr.debug/*`; `/myapi/*` is retained only as an
+internal or loopback compatibility prefix. External project-family targets are
+documented separately and remain pending until their exact slug and backend
+implementation are verified.
 
 Expected Pages URL: `https://doktor-debug.github.io/wiki/`.

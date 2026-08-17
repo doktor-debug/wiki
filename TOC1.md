@@ -24,3 +24,6 @@ permalink: /TOC1/
 | `taxonomy` | Stammbaum | Device/software/ECLASS/dependency classification |
 
 External service: `n-e-o-w-u-l-f/myAPI` is the only FastAPI/OpenAPI implementation, repository allowlist, gate, write-policy, and API-test location. It has no organization mirror.
+
+See [Project-family routing](./docs/project-family-routing/) for conditional
+external targets. Their exact slugs must be verified before use.

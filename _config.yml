@@ -1,5 +1,6 @@
 title: "Dr.Debug Wiki"
 description: "Evidence-routed debugging knowledge, preservation, scanner, and repair workflows."
+lang: de
 url: "https://doktor-debug.github.io"
 baseurl: "/wiki"
 markdown: kramdown

@@ -7,7 +7,7 @@ permalink: /
 
 # Dr.Debug Wiki
 
-<span class="badge">v2.3.0 documentation</span>
+<span class="badge">v2.4.0 documentation</span>
 
 Dr.Debug Wiki is the documentation portal for the 14 `doktor-debug` repositories and the external enforcement service `n-e-o-w-u-l-f/myAPI`. It explains repository ownership, modes, scanner intake, active archive/storage preservation, imports, proposals, canonical facts, workflows, and separately gated writes.
 
@@ -26,6 +26,7 @@ Dr.Debug Wiki is the documentation portal for the 14 `doktor-debug` repositories
 - [Architecture](./docs/architecture/)
 - [API reference](./docs/api-reference/)
 - [Preservation and distribution](./docs/preservation/)
+- [Project-family routing](./docs/project-family-routing/)
 
 ## Public documentation layout
 
@@ -34,3 +35,6 @@ Dr.Debug Wiki is the documentation portal for the 14 `doktor-debug` repositories
 3. `doktor-debug/web` renders device, software, manual, media, archive, and storage presentation views.
 
 API code and policy are not mirrored into the organization. The canonical implementation, OpenAPI contract, gates, and tests live only in `n-e-o-w-u-l-f/myAPI`.
+
+The public GPT Action route is `/dr.debug/*`. `/myapi/*` is an internal or
+loopback compatibility prefix and is not claimed as publicly reachable.
